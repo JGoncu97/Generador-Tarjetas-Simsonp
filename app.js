@@ -1,6 +1,9 @@
 const simpsons=[];
 const listCard = document.getElementById('cardContainer');
 
+const searchInput =document.getElementById('searchCard')
+
+searchInput.addEventListener('input',filterCards());
 function getCardData(){
   fetch('https://thesimpsonsquoteapi.glitch.me/quotes')
     .then(response => response.json())
@@ -15,26 +18,31 @@ function getCardData(){
 
 }
 
-let counter=0;
 
+  const btnClean=document.getElementById('removeAll');
+  btnClean.addEventListener('click',cleanList)
   const cardSoloApi= document.getElementById('cardSolo');
   cardSoloApi.addEventListener('click',getCardData);
-
+  let counter=0;
   const cardMultiApi= document.getElementById('cardMulti');
-cardMultiApi,addEventListener('click',generatorMultiCard(counter));
+  cardMultiApi.addEventListener('click',generatorMultiCard);
+
+  function cleanList(){
+    
+    listCard.innerHTML='';
+    simpsons=[];
+  }
 
 function generatorMultiCard(counter){
 
    counter=parseInt(prompt('¿Cuantas tarjetas desea crear?'));
 
   for(let i=0; i<counter; i++){
-    getCardData()
+    getCardData();
   }
   
 
 }
-
-
 
   function generatorCard(data) {
     const containerCardApi=document.createElement('div');
@@ -64,6 +72,17 @@ function generatorMultiCard(counter){
   function renderProducts() {
     listCard.innerHTML='';
     simpsons.forEach(simpson => generatorCard(simpson));
+}
+
+function filterCards(){
+   const searchTerm= searchInput.value.toLowerCase();
+  listCard.innerHTML='';
+
+  const filteredSimpsons= simpsons.filter(simpson =>
+    simpson.character.toLowerCase().includes(searchTerm)
+  );
+
+  filteredSimpsons.forEach(simpson =>generatorCard(simpson));
 }
 
 renderProducts()
