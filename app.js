@@ -30,7 +30,7 @@ function getCardData(){
   function cleanList(){
     
     listCard.innerHTML='';
-    simpsons=[];
+    simpsons.length=0;
   }
 
 function generatorMultiCard(counter){

@@ -1,11 +1,13 @@
 body{
     padding: 0px;
     margin: 0px;
+    /* border: 0.5rem solid black; */
 }
 
 header{
-    width: 100vw;
+    width: 85.4rem;
     height: 15vh;
+    /* border: 0.5rem solid black; */
     background-color: #440a0a;
     text-align: center;
     color: white;
@@ -61,7 +63,10 @@ p{
 .containerList{
     display: flex;
     justify-content: space-evenly;
-    align-content: center;
-    width: 100%;
-    height: auto;
+    /* border: 0.5rem solid black; */
+    align-content: flex-start; 
+    flex-wrap: wrap; 
+    width: 81.4rem;
+    height: auto; 
+    padding: 1rem;
 }
